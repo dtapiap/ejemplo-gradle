@@ -5,37 +5,27 @@ pipeline {
         NEXUS_PASSWORD     = credentials('NEXUS-PASS')
     }
     parameters {
-    choice choices: ['maven', 'gradle'], description: 'selecione una herramienta', name: 'compileTool'
+        choice(
+            name:'compileTool',
+            choices: ['Maven', 'Gradle'],
+            description: 'Seleccione herramienta de compilacion'
+        )
     }
-
     stages {
         stage("Pipeline"){
             steps {
                 script{
-                    if(parameters.compileTool== 'maven'){
-                        //compilar maven
-                        def executor == load "maven.groovy"
-                        executor.call()
-
+                  switch(params.compileTool)
+                    {
+                        case 'Maven':
+                            def ejecucion = load 'maven.groovy'
+                            ejecucion.call()
+                        break;
+                        case 'Gradle':
+                            def ejecucion = load 'gradle.groovy'
+                            ejecucion.call()
+                        break;
                     }
-                    else{
-                        //compilar gradle
-                        def executor == load "gradle.groovy"
-                        executor.call()
-                    }
-                }
-            }
-            post {
-                always {
-                    sh "echo 'fase always executed post'"
-                }
-
-                success {
-                    sh "echo 'fase success'"
-                }
-
-                failure {
-                    sh "echo 'fase failure'"
                 }
             }
         }
