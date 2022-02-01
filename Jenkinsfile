@@ -32,7 +32,7 @@ pipeline {
                             [$class: 'MavenPackage',
                                 mavenAssetList: [
                                     [classifier: '',
-                                    extension: '.jar',
+                                    extension: 'jar',
                                     filePath: 'build/libs/DevOpsUsach2020-0.0.1.jar'
                                 ]
                             ],
@@ -46,7 +46,7 @@ pipeline {
                         ]
                     }
                     stage("Paso 5: Descargar Nexus"){
-                        sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar" -O'
+                        sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar -O'
                     }
                     stage("Paso 6: Levantar Artefacto Jar"){
                         sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
