@@ -40,13 +40,13 @@ pipeline {
                                     artifactId: 'DevOpsUsach2020',
                                     groupId: 'com.devopsusach2020',
                                     packaging: 'jar',
-                                    version: '0.0.1'
+                                    version: '0.0.11'
                                 ]
                             ]
                         ]
                     }
                     stage("Paso 5: Descargar Nexus"){
-                        sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus1:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1-AS-CODE/DevOpsUsach2020-0.0.1-AS-CODE.jar" -O'
+                        sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1-AS-CODE/DevOpsUsach2020-0.0.1-AS-CODE.jar" -O'
                     }
                     stage("Paso 6: Levantar Artefacto Jar"){
                         sh 'nohup bash java -jar DevOpsUsach2020-0.0.1.jar & >/dev/null'
