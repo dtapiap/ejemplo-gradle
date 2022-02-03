@@ -28,6 +28,7 @@ pipeline {
                     }
                 }
             }
+
             post{
                 success{
                     slackSend color: 'good', message: "[Daniel] [${JOB_NAME}] [${BUILD_TAG}] Ejecucion Exitosa", teamDomain: 'dipdevopsusac-tr94431', tokenCredentialId: 'token-slack'
