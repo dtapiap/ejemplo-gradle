@@ -3,8 +3,8 @@ library ('pipeline')
 //  ingresar los stages  separados por ";" ( punto y coma ) VACIO se ejecutan todos
 // 'build;'sonar';'upload_nexus''download_nexus','run_jar': 'stageRunJar','curl_jar': 'stageCurlJar'
  environment {
-   varTOOLS = "Gradle"
-    dvarStages = " "
+   env.varTOOLS = "Gradle"
+    env.varStages = " "
     }
 
 ejecucion.call(env.varTOOLS,env.varStages)
