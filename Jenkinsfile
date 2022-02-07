@@ -8,4 +8,4 @@ library ('pipeline')
 // 'build;'sonar';'upload_nexus''download_nexus','run_jar': 'stageRunJar','curl_jar': 'stageCurlJar'        
         varStages= ' '     
     }
-ejecucion.call(varTOOLS,varStages)
+ejecucion.call(${varTOOLS},${varStages})
