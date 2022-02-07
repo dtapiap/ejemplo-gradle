@@ -7,4 +7,4 @@ library ('pipeline')
    varStages = " "
     }
 
-ejecucion.call("Gradle","paso1;paso2;paso3")
+ejecucion.call("Gradle"," ")
