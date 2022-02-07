@@ -7,4 +7,4 @@ library ('pipeline')
     dvarStages = " "
     }
 
-ejecucion.call(env.varTOOLS,env.varStages)
+ejecucion.call(${env.varTOOLS},${env.varStages})
