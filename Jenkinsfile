@@ -1,5 +1,5 @@
 library ('pipeline')
-ejecucion.call()
+
  environment {
 
 // agregue la herramienta que  desea compilar Gradle o Maven
@@ -8,3 +8,4 @@ ejecucion.call()
 // 'build;'sonar';'upload_nexus''download_nexus','run_jar': 'stageRunJar','curl_jar': 'stageCurlJar'        
         varStages= ' '     
     }
+ejecucion.call(varTOOLS,varStages)
